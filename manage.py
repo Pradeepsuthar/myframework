@@ -2,6 +2,7 @@
 from lib import settings as ps
 from lib import project as project
 import sys
+import os
 
 def main():
     set_obj = ps.Settings()
@@ -26,6 +27,7 @@ def main():
                 myproject.create(project_name)
                 break
             except IndexError as error:
+               
                 print("\nType '%s help <subcommand>' for help on a specific subcommand."%py_file)
                 cmd_error()
                 break
