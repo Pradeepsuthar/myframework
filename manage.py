@@ -3,6 +3,7 @@ from lib import settings as ps
 from lib import project as project
 import sys
 import os
+
 set_obj = ps.Settings()
 set_obj.allSettings()
 myproject = project.Project()
@@ -10,7 +11,6 @@ args_list = sys.argv
 current_file = args_list[0]
 slice_object = slice(-1, -10, -1)
 py_file = current_file[slice_object][::-1]
-
 
 def main():
     '''root file'''
@@ -22,11 +22,10 @@ def main():
             myproject.create(project_name)
         elif sys.argv[1] == 'startproject':
             print("\nProject start now...")
-        elif sys.argv[0] == current_file:
+        elif py_file == 'manage.py':
             cmd_error()
         else:
             cmd_error()
-
     except IndexError as error:
         cmd_error()
         
@@ -37,7 +36,6 @@ def cmd_error():
     subcommands = ['createproject', 'startproject']
     for i in subcommands:
         print("->", i)
-
 
 if __name__ == '__main__':
     main()
