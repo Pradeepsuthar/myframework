@@ -3,42 +3,41 @@ from lib import settings as ps
 from lib import project as project
 import sys
 import os
+set_obj = ps.Settings()
+set_obj.allSettings()
+myproject = project.Project()
+args_list = sys.argv
+current_file = args_list[0]
+slice_object = slice(-1, -10, -1)
+py_file = current_file[slice_object][::-1]
+
 
 def main():
-    set_obj = ps.Settings()
-    set_obj.allSettings()
-
-    myproject = project.Project()
-
-    args_list = sys.argv
-
-    current_file = args_list[0]
-    slice_object = slice(-1, -10, -1)
-
-    py_file = current_file[slice_object][::-1]
+    '''root file'''
     print("="*100)
-
     args = sys.argv
+    try:
+        if sys.argv[1] == 'createproject':
+            project_name = args[2]
+            myproject.create(project_name)
+        elif sys.argv[1] == 'startproject':
+            print("\nProject start now...")
+        elif sys.argv[0] == current_file:
+            cmd_error()
+        else:
+            cmd_error()
 
-    for cmd in args:
-        if cmd == 'createproject' or cmd == args_list[0]:
-            try:
-                project_name = args[2]
-                myproject.create(project_name)
-                break
-            except IndexError as error:
-               
-                print("\nType '%s help <subcommand>' for help on a specific subcommand."%py_file)
-                cmd_error()
-                break
-
-
+    except IndexError as error:
+        cmd_error()
+        
 def cmd_error():
     '''Output expected IndexErrors.'''
+    print("\nType '%s help <subcommand>' for help on a specific subcommand." % py_file)
     print("\nAvailable subcommands:\n")
-    subcommands = ['createproject','startproject']
+    subcommands = ['createproject', 'startproject']
     for i in subcommands:
-        print("->",i)
+        print("->", i)
+
 
 if __name__ == '__main__':
     main()
