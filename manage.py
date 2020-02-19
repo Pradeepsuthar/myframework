@@ -3,6 +3,9 @@ from lib import settings as ps
 from lib import project as project
 import sys
 import os
+import datetime
+
+now = datetime.datetime.now()
 
 set_obj = ps.Settings()
 set_obj.allSettings()
@@ -21,7 +24,13 @@ def main():
             project_name = args[2]
             myproject.create(project_name)
         elif sys.argv[1] == 'startproject':
-            print("\nProject start now...")
+            string = '''Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+%s
+'''%(now.strftime("%B %d, %Y - %H:%M:%S"))
+            print(string)
         elif py_file == 'manage.py':
             cmd_error()
         else:
