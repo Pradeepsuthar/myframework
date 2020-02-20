@@ -33,6 +33,7 @@ System check identified no issues (0 silenced).
 %s
 '''%(now.strftime("%B %d, %Y - %H:%M:%S"))
             print(string)
+            print("="*100)
             project_name = args[2]
             myproject.start(project_name)
         elif py_file == 'manage.py':

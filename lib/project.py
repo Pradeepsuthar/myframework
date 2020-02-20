@@ -8,7 +8,7 @@ class Project:
         try:
             os.mkdir(project_name)
             # Create target Directory
-            project_files = ['views.py','urls.py','app.py']
+            project_files = ['init.py','views.py','urls.py','app.py']
             current_dir_path = os.getcwd()+"\\"+project_name   
             print("\n%s, your project is created"%(project_name))
             for i in range(len(project_files)):
@@ -21,7 +21,7 @@ class Project:
             
 
     def start(self,project_name):
-        file_url = project_name+'/views.py'
+        file_url = project_name+'/init.py'
         exec(open(file_url).read())
 
 
