@@ -1,9 +1,6 @@
 import os
 
 class Project:
-    # def __init__(self, project_name):
-    #     self.prject_name = project_name
-
     def create(self,project_name):
         try:
             os.mkdir(project_name)
