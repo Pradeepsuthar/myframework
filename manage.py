@@ -23,6 +23,8 @@ def main():
         if sys.argv[1] == 'createproject':
             project_name = args[2]
             myproject.create(project_name)
+            # project_obj = project.Project(project_name)
+            # project_obj.create()
         elif sys.argv[1] == 'startproject':
             string = '''Watching for file changes with StatReloader
 Performing system checks...
@@ -31,6 +33,8 @@ System check identified no issues (0 silenced).
 %s
 '''%(now.strftime("%B %d, %Y - %H:%M:%S"))
             print(string)
+            project_name = args[2]
+            myproject.start(project_name)
         elif py_file == 'manage.py':
             cmd_error()
         else:
